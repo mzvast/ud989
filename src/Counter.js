@@ -1,6 +1,10 @@
-$('#vote_bt').click(function (e) {
-	e.preventDefault;
-	getVote = $('#votes').text();
-	getVote++;
-	$('#votes').text(getVote);
-})
+function Counter () {
+	this.num = 0;
+};
+
+Counter.prototype.add = function() {
+	this.num++;
+};
+Counter.prototype.get = function() {
+	return this.num;
+};
