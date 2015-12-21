@@ -1,9 +1,9 @@
  $(document).ready(function() {
      console.log("document loaded");  
      importCats();
-     renderCatsHTML(myCatBook);   
+     // renderCatsHTML(myCatBook);   
       console.log(myCatBook);
-
+      renderListsHTML(myCatBook);
    //    $('#btn0').on('click',function  (event) {
 			// 	event.preventDefault();
 			// 	console.log(event.target);
@@ -40,6 +40,41 @@ function importCats () {
 		myCatBook.add(thisCat);
 		console.log("There are "+myCatBook.getNumber()+ "cats!");
 	}
+}
+function renderListsHTML (catBook) {
+	for (var i = 0; i < catBook.getNumber(); i++) {
+		var name = catBook.get(i).getName();
+		$('.list-group').append('<a href="#" id="cat'+i+'" class="list-group-item">'+ name +'</a>');
+		$('#cat'+i).on('click',(function  (i) {				
+			return function  (event) {
+				event.preventDefault();
+				var name = catBook.get(i).getName();
+				var url = catBook.get(i).getURL();
+				var count = catBook.get(i).getCount();
+				$('.thumbnail').html(
+			'<div class="row">	\
+			<div>\
+				<lable id="counter'+i+'">\
+					<h2>'+name+'</h2>\
+				<img src="'+url +'" height="150" width="150">\
+					<h3 id="counter'+i+'">'+count+'</h3>\
+				</lable>\
+				<button class="btn btn-default" id="btn'+i+'">Click Me</button>\
+			</div>\
+		</div>'
+			);
+				$('#btn'+i).on('click',(function(i){
+			return function (event) {
+				event.preventDefault();
+				console.log(event.target);
+				console.log(i);
+				upVote(i);
+				updateVoteHTML(i);
+			}
+		})(i));
+			};
+		})(i));
+	};
 }
 
 function renderCatsHTML (catBook) {	
