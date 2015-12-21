@@ -4,18 +4,18 @@
      renderCatsHTML(myCatBook);   
       console.log(myCatBook);
 
-      $('#btn0').on('click',function  (event) {
-				event.preventDefault();
-				console.log(event.target);
-				upVote(0);
-				updateVoteHTML(0);
-			});	
-      $('#btn1').on('click',function  (event) {
-				event.preventDefault();
-				console.log(event.target);
-				upVote(1);
-				updateVoteHTML(1);
-			});	
+   //    $('#btn0').on('click',function  (event) {
+			// 	event.preventDefault();
+			// 	console.log(event.target);
+			// 	upVote(0);
+			// 	updateVoteHTML(0);
+			// });	
+   //    $('#btn1').on('click',function  (event) {
+			// 	event.preventDefault();
+			// 	console.log(event.target);
+			// 	upVote(1);
+			// 	updateVoteHTML(1);
+			// });	
  });
 
 CatCatogory=[
@@ -59,6 +59,16 @@ function renderCatsHTML (catBook) {
 			</div>\
 		</div>'
 			);
+
+		$('#btn'+i).on('click',(function(i){
+			return function (event) {
+				event.preventDefault();
+				console.log(event.target);
+				console.log(i);
+				upVote(i);
+				updateVoteHTML(i);
+			}
+		})(i));
 
 	};
 
