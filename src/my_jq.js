@@ -11,7 +11,7 @@
  //     console.log("window loaded");
  // });
 function setCouterText (id,val) {	
-	$('#counter'+id).html(val);
+	$('#counter'+id+'.counter').html(val);
 };
 
 function getCouterById (id) {	
