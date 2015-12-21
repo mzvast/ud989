@@ -20,4 +20,10 @@ describe('Cat Test', function() {
 		thisCat.upVote();
 		expect(thisCat.getCount()).toBe(1);
 	});
+
+	it('should initialize a cats ', function() {
+		thisCat.init('name','url')		
+		expect(thisCat.getName()).toBe('name');
+		expect(thisCat.getURL()).toBe('url');
+	});
 });

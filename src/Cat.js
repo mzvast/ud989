@@ -22,3 +22,8 @@ Cat.prototype.upVote = function() {
 Cat.prototype.getCount = function() {
 	return this.count;
 };
+
+Cat.prototype.init = function(name,url) {
+	this.name = name;
+	this.url = url;
+};
